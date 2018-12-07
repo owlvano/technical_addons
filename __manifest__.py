@@ -25,5 +25,6 @@
     # always loaded
     'data': [
         # 'security/ir.model.access.csv',
+        'report/module_category_views.xml',
     ],
 }

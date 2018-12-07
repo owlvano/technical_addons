@@ -1,0 +1,56 @@
+<odoo>
+    <data>
+        <record id="module_category_report_pivot" model="ir.ui.view">
+        <field name="name">tech.add.module.category.report.pivot</field>
+        <field name="model">tech.add.module.category.report</field>
+        <field name="arch" type="xml">
+            <pivot string="Access Rights Overview" disable_linking="True">
+                <field name="category_id" type="row"/>
+                <field name="group_id" type="row"/>
+                <field name="user_id" type="measure"/>
+            </pivot>
+        </field>
+        </record>
+
+        <record id="module_category_report_search" model="ir.ui.view">
+            <field name="name">tech.add.module.category.report.search</field>
+            <field name="model">tech.add.module.category.report</field>
+            <field name="arch" type="xml">
+                <search string="Prices Analysis">
+                    <field name="category_id"/>
+                    <field name="group_id"/>
+                    <field name="user_id"/>
+                    <group string="Group By">
+                        <filter string="Application" name="by_category_id" context="{'group_by':'category_id'}"/>
+                        <filter string="Group" name="by_group_id" context="{'group_by':'group_id'}"/>
+                        <filter string="User" name="by_user_id" context="{'group_by':'user_id'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record id="action_module_category_report_pivot" model="ir.actions.act_window">
+            <field name="name">Access Rights Overview</field>
+            <field name="res_model">tech.add.module.category.report</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">pivot</field>
+            <field name="view_id"></field>  <!-- force empty -->
+        </record>
+
+        <!-- Top menu item -->
+    
+        <menuitem
+            name="My Technical Addons"
+            id="menu_root"
+            parent="base.menu_administration"
+            sequence="90"/>
+
+        <menuitem 
+            name="Application Access Rights Overview" 
+            id="menu_module_category_report"
+            parent="menu_root"
+            action="action_module_category_report_pivot"
+            />
+
+    </data>
+</odoo>    
