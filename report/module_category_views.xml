@@ -57,7 +57,7 @@
             sequence="90"/>
 
         <menuitem 
-            name="Application Access Rights Overview" 
+            name="Access Rights Overview" 
             id="menu_module_category_report"
             parent="menu_root"
             action="action_module_category_report_pivot"
