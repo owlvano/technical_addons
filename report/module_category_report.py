@@ -19,10 +19,14 @@ class ModuleCategoryReport(models.Model):
                 g.id as group_id,
                 u.id as user_id
             FROM (
-            	ir_module_category a
-            		left join res_groups g on (g.category_id=a.id)
-                    left join res_groups_users_rel rel on (rel.gid=g.id)
-            		left join res_users u on (u.id=rel.uid)
+            	-- ir_module_category a
+            	-- 	left join res_groups g on (g.category_id=a.id)
+             --        left join res_groups_users_rel rel on (rel.gid=g.id)
+            	-- 	left join res_users u on (u.id=rel.uid)
+                res_users u
+                    left join res_groups_users_rel rel on (u.id=rel.uid)
+                    left join res_groups g on (rel.gid=g.id)
+                    left join ir_module_category a on (g.category_id=a.id)
             )
             GROUP BY
                 a.id,
